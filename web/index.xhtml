@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Página Inicial</title>
+
+        <!-- Carregando o CSS do Bootstrap -->
+        <link href="/TesteJPA/css/bootstrap.min.css" rel="stylesheet" media="screen" />		
+        <!-- jQuery (plugins em JavaScript) -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- componentes JavaScript do bootstrap -->	
+        <script type="text/javascript" src="/TesteJPA/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form>
+                <div class="page-header">
+                    Em construção
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <label class="control-label">Descrição</label>
+                    </div>
+                    <div class="col-md-3">
+                        <h:inputText class="form-control" value="#{tarefaMB.tarefa.descricao}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <label class="control-label">Status</label>
+                    </div>
+                    <div class="col-md-2">
+                        <h:inputText class="form-control" value="#{tarefaMB.tarefa.status}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <h:commandButton class="btn btn-success small" action="#{tarefaMB.salvar(tarefaMB.tarefa)}" value="Salvar"/>
+                    </div>
+                </div>
+                <hr/>
+                <h:dataTable class="table table-striped" value="#{tarefaMB.listaTarefas()}" var="t">
+                    <h:column>
+                        <f:facet name="header">Descrição</f:facet>
+                            #{t.descricao}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Situação</f:facet>
+                            #{t.status}
+                    </h:column>
+                    <h:column>
+                        <h:commandLink class="glyphicon glyphicon-link" action="#{tarefaMB.excluir(t)}" value=" Excluir"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+    </h:body>
+</html>
